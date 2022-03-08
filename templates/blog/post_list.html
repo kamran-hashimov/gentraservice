@@ -1,53 +1,13 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-</head>
-
-<body>
-    <div>
-        <div>
-            <div class="page-header">
-                <h1><a href="/">Django Girls Blog</a></h1>
+{% extends 'blog/base.html' %}
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                <p>published date: {{ post.published_date }}</p>
             </div>
-            <div class="content container">
-                <div class="row">
-                    <div class="col-md-8">
-                        {% for post in posts %}
-                            <div class="post">
-                                <div class="date">
-                                    <p>published date: {{ post.published_date }}</p>
-                                </div>
-                                <h1><a href="">{{ post.title }}</a></h1>
-                                <p>{{ post.text|linebreaksbr }}</p>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-            
+            <h1><a href="">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
         </div>
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">İlk Blogum</a></h2>
-            <p>Çok heyecanliyim! Bu benim ilk blogum. Ne kadar zevkli bir işmiş bilgisayarlarla uğraşmak. Artik bilgisayar başindan kalkmam. </p>
-        </div>
-
-        <div>
-            <p>published: 14.06.2014, 12:20</p>
-            <h2><a href="">İkinci gönderim</a></h2>
-            <p>Bir varmiş bir yokmuş, evvel zaman içinde Ne kadar zevkli bir işmiş bilgisayarlarla uğraşmak. Artik bilgisayar başindan kalkmam. kalbur saman içinde, develer tellal iken, pireler berber iken; ben annemin beşiğini tingir mingir sallar iken.</p>
-        </div>
-    </div>
-</body>
-
-</html>
+    {% endfor %}
+{% endblock content %}
+                   
